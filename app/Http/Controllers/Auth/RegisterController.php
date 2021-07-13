@@ -59,8 +59,18 @@ class RegisterController extends Controller
             'password'=>'required|min:6'
         ]);
 
+        // if(auth()->attemp($request->only(['email','password']))){
+        //     return redirect()->route('dashboard')->with('success','Login Success');
+        // }else{
+        //     return back()->with('status','Invalid details ');
+        // }
+
+        if(!auth()->attempt($request->only(['email','password']))){
+            return back()->with('status','Invaild email or password');
+        }
+
         auth()->attempt($request->only(['email','password']));
-        return redirect()->route('dashboard')->with('success','Login Success');
+        return redirect()->route('dashboard')->with('status','Login Success!!');
     }
 
     public function logout(Request $request)

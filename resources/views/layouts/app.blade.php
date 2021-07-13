@@ -9,14 +9,14 @@
     </title>
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
 </head>
-<body class="bg-gray-300">
+<body class="bg-gray-300">  
     <nav class="p-6 bg-white flex justify-between mb-6">
         <ul class="flex item-center ">
-            <li><a class="p-3" href="">Home</a></li>
+            <li><a class="p-3" href="{{route("home")}}">Home</a></li>
             @if(Auth::check())
-            <li><a class="p-3" href="">Dashboard</a></li>
+            <li><a class="p-3" href="{{route('dashboard')}}">Dashboard</a></li>
             @endif
-            <li><a class="p-3" href="">Post</a></li>
+            <li><a class="p-3" href="{{route('posts')}}">Post</a></li>
         </ul>
 
         <ul class="flex item-center">

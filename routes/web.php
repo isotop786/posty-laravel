@@ -19,10 +19,15 @@ Route::get('/posts', function () {
     return view('posts.index');
 })->name('posts');
 
-Route::get('/register',[RegisterController::class,'index'])->name('register');
-Route::post('/register',[RegisterController::class,'store'])->name('register');
-Route::get('/login',[RegisterController::class,'loginForm'])->name('login');
-Route::post('/login',[RegisterController::class,'login'])->name('login');
+Route::get('/home',function(){
+    return view('home');
+})->name('home');
+
+
+Route::get('/register',[RegisterController::class,'index'])->name('register')->middleware('guest');
+Route::post('/register',[RegisterController::class,'store'])->name('register')->middleware('guest');
+Route::get('/login',[RegisterController::class,'loginForm'])->name('login')->middleware('guest');
+Route::post('/login',[RegisterController::class,'login'])->name('login')->middleware('guest');
 Route::post('/logout',[RegisterController::class,'logout'])->name('logout');
 
-Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard');
+Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard')->middleware('auth');
