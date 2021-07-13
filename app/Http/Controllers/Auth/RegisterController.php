@@ -54,7 +54,22 @@ class RegisterController extends Controller
 
     public function login(Request $request)
     {
-        auth()->attempt($request->ony(['email','password']));
+        $request->validate([
+            'email'=>'required|email',
+            'password'=>'required|min:6'
+        ]);
+
+        auth()->attempt($request->only(['email','password']));
         return redirect()->route('dashboard')->with('success','Login Success');
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect()->route('posts');
     }
 }

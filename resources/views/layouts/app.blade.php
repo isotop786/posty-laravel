@@ -22,7 +22,11 @@
         <ul class="flex item-center">
             @if(Auth::check())
                 <li><a href="" class="p-3">{{Auth::user()->name}}</a></li>
-                 <li><a class="p-3" href="">Logout</a></li>
+                 {{-- <li><a class="p-3" href="{{route('logout')}}">Logout</a></li> --}}
+                 <li><form action="{{route('logout')}}" method="POST">
+                    @csrf 
+                    <input class="p-2 bg-red-400 text-white" type="submit" value="Logout  ">
+                 </form></li>
             @else
             <li><a class="p-3" href="{{route('login')}}">Login</a></li>
              <li><a class="p-3" href="{{route('register')}}">Register</a></li>
