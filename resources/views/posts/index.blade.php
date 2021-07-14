@@ -39,9 +39,11 @@ Posty | All Posts
                     <a href="" class="font-bold">{{$p->user->name}}</a>
                     <span class="text-gray-600 text-sm">{{$p->created_at->diffForHumans()}}</span>
                     <p class="mb-2">{{$p->body}}</p>
+
+                  
                </div>
             @endforeach
-        
+                    {{$posts->links()}}
             @else
                 <div class="flex justify-center mb-2">
                 <div class="w-8/12 bg-light p-4 rounded-lg">
