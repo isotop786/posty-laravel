@@ -44,6 +44,12 @@ Login
                 <div class="text-red-500 p-1">{{$message}}</div>
             @enderror
         </div>
+        <div class="mb-3">
+            <div class="flex items-center">
+            <input type="checkbox" name="remember" class="mr-2">
+            <label for="remember">Remember Me</label>
+            </div>
+        </div>
         <div>
             <input
             class="bg-blue-400 p-3 w-full text-white rounded"

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PostsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,10 +16,10 @@ use App\Http\Controllers\DashboardController;
 |
 */
 
-Route::get('/posts', function () {
-    return view('posts.index');
-})->name('posts');
 
+Route::get('/',function(){
+    return view('home');
+})->name('home');
 Route::get('/home',function(){
     return view('home');
 })->name('home');
@@ -31,3 +32,7 @@ Route::post('/login',[RegisterController::class,'login'])->name('login')->middle
 Route::post('/logout',[RegisterController::class,'logout'])->name('logout');
 
 Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard')->middleware('auth');
+
+// post routes
+Route::get('/posts',[PostsController::class,'index'])->name('posts');
+Route::post('/posts',[PostsController::class,'store'])->name('posts');

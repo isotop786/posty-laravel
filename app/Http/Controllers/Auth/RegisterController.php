@@ -54,10 +54,16 @@ class RegisterController extends Controller
 
     public function login(Request $request)
     {
+        $remember = false;
+
         $request->validate([
             'email'=>'required|email',
             'password'=>'required|min:6'
         ]);
+
+        if($request->remember =='on'){
+            $remember = true;
+        }
 
         // if(auth()->attemp($request->only(['email','password']))){
         //     return redirect()->route('dashboard')->with('success','Login Success');
@@ -69,7 +75,7 @@ class RegisterController extends Controller
             return back()->with('status','Invaild email or password');
         }
 
-        auth()->attempt($request->only(['email','password']));
+        auth()->attempt($request->only(['email','password']),$request->remember );
         return redirect()->route('dashboard')->with('status','Login Success!!');
     }
 
