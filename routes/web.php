@@ -39,3 +39,4 @@ Route::get('/posts',[PostsController::class,'index'])->name('posts');
 Route::post('/posts',[PostsController::class,'store'])->name('posts');
 
 Route::post('/posts/{post}/like',[LikeController::class,'store'])->name('like');
+Route::delete('/posts/{post}/dislike',[LikeController::class,'deleteLike'])->name('deletelike');

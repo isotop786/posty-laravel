@@ -48,14 +48,17 @@ Posty | All Posts
                             
                       @if(Auth::check())
                             @if($p->likedBy(auth()->user()))
-                                <span class="bg-green-200 mr-4 p-1">You have like this post</span>
-                                <form class="mr-2" action="" method="post">@csrf
-                                    <button type="submit" disabled>Dislike</button>
+                                
+                                <form class="mr-2" action="{{route('deletelike',[$p->id])}}" method="post">@csrf
+                                @method('DELETE')
+                                    <button
+                                    class="text-red-400"
+                                     type="submit" >Dislike</button>
                                 </form>
                             @else 
                                 <form  class="mr-3" action="{{route('like',[$p->id])}}" method="post">@csrf
                                     <button  type="submit"
-                                 
+                                    class="text-blue-400"
                                      >Like</button>
                                 </form>
                             @endif
@@ -64,20 +67,11 @@ Posty | All Posts
                             
                                 <span 
                                 class="ml-2  p-1 rounded
-                                @if($p->likes->count()>0)
-                                bg-blue-200
-                                @else
-                                bg-red-300 
-                                @endif
+                             
                                 "
                                 >
-
-                                @if($p->likes->count()>0)
-                                
                                 {{$p->likes->count()}} {{Str::plural('like',$p->likes->count())}}</span>
-                                @else
-                                No Likes
-                                @endif
+                               
 
                             @else 
                             {{$p->likes->count() }}  {{Str::plural('like',$p->likes->count())}}
