@@ -10,6 +10,7 @@ Posty | All Posts
             <form action="{{route('posts')}}" method="post">
             @csrf
 
+            @if(Auth::check())
             <div class="mb-4">
                 <label for="body" class="sr-only">Body of the Post</label>
                <textarea name="body" id="" cols="30" rows="4"
@@ -24,6 +25,7 @@ Posty | All Posts
                    <div class="text-red-500 p-1">{{$message}}</div>
                @enderror
             </div>
+          
             <div>
             <button type="submit" class="items-end bg-blue-400 p-3 w-full  text-white
             rounded 
@@ -31,6 +33,12 @@ Posty | All Posts
             </div>
             
             </form>
+              @else
+            <div class="bg-blue-500 text-white p-6  rounded-lg my-3">
+                <h1 class="text-2xl mb-3">Wanna make a post <a class="p-1 ruonded-lg bg-white text-blue-700" href="{{route('register')}}">Register</a> Today!!</h1>
+                <p class="mt-3">Already have an account ? <a style="border-bottom:1px solid white" href="{{route('login')}}">Login</a> here</p>
+            </div>
+            @endif
 
                @if($posts->count())
 
