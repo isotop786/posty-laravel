@@ -79,11 +79,20 @@ Posty | All Posts
                                 No Likes
                                 @endif
 
+                            @else 
+                            {{$p->likes->count() }}  {{Str::plural('like',$p->likes->count())}}
+
                                 @endif
                             </div>
                          
 
                </div>
+
+               @auth()
+                   <div class="flex items-center">
+                    Comment
+                   </div>
+               @endauth
                   
             @endforeach
           
