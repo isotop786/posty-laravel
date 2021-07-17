@@ -45,4 +45,4 @@ Route::delete('/posts/{post}/dislike',[LikeController::class,'deleteLike'])->nam
 
 // Comment routes 
 // Route::get('/posts/{post}/comment',[CommetController::class,'index'])->name('comments');
-Route::post('/posts/{post}/comment',[CommetController::class,'get'])->name('comments');
+Route::post('/posts/{post}/comment',[CommetController::class,'store'])->name('comment');

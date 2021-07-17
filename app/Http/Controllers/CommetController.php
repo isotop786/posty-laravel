@@ -14,6 +14,20 @@ class CommetController extends Controller
         $this->middleware(['auth']);
     }
 
+    public function store(Post $post,Request $request)
+    {
+        $request->validate([
+            'comment'=>'required'
+        ]);
+
+        $post->comments()->create([
+            'body'=>$request->comment,
+            'user_id'=>$request->user()->id
+        ]);
+
+        return back();
+    }
+
     public function index(Post $post,Request $request)
     {
         $c = $post->comments()->where('user_id',$request->user()->id)->get();

@@ -108,10 +108,14 @@ Posty | All Posts
                     </div>
 
                     <div class="p-3 my-2">
-                    <form action="" method="post">
+                    <form action="{{route("comment",$p->id)}}" method="post">
                     @csrf 
                     <div>
-                    <input class="bg-white p-1 rounded" type="text" name="" id=""><button class="p-1 bg-blue-200" type="submit">comment</button>
+                    <input class="bg-white p-1 rounded focus:outline-none" type="text" name="comment" id=""><button class="p-1 bg-blue-200" type="submit">comment</button>
+                    @error("comment")
+                        <div>Comment can not be empty</div>
+                    @enderror
+                   {{$errors->first('comment')}}
                     </div>
                     </form>
                     </div>
