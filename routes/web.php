@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\LikeController;
+use App\Http\Controllers\CommetController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,5 +39,10 @@ Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard')
 Route::get('/posts',[PostsController::class,'index'])->name('posts');
 Route::post('/posts',[PostsController::class,'store'])->name('posts');
 
+// like routes
 Route::post('/posts/{post}/like',[LikeController::class,'store'])->name('like');
 Route::delete('/posts/{post}/dislike',[LikeController::class,'deleteLike'])->name('deletelike');
+
+// Comment routes 
+// Route::get('/posts/{post}/comment',[CommetController::class,'index'])->name('comments');
+Route::post('/posts/{post}/comment',[CommetController::class,'get'])->name('comments');

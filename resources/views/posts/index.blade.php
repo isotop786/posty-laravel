@@ -87,14 +87,40 @@ Posty | All Posts
                                 @endif
                             </div>
                          
+                          @auth()
+                          <hr>
+                   <div class="items-center my-4">
+                    <div>
+                     
+                     {{-- {{$p->comments()->where('user_id',auth()->id())}} --}}
+                        {{-- {{$p->comments()->get()}} --}}
+                     {{-- {{dd($p->comments())}} --}}
+
+                    @if(count($p->comments()->get()))
+                    {{-- {{$p->comments()->get()->count}} comments --}}
+                    <h2>{{count($p->comments()->get())}} {{Str::plural('Comment',count($p->comments()->get()))}}</h2>
+                    @else
+                    No Comments
+                    @endif
+                     @foreach ($p->comments()->get() as $c)
+                        <p><strong>{{$c->user->name}}</strong> commented: "<em>{{$c->body}}</em>"</p>
+                     @endforeach
+                    </div>
+
+                    <div class="p-3 my-2">
+                    <form action="" method="post">
+                    @csrf 
+                    <div>
+                    <input class="bg-white p-1 rounded" type="text" name="" id=""><button class="p-1 bg-blue-200" type="submit">comment</button>
+                    </div>
+                    </form>
+                    </div>
+                   </div>
+               @endauth
 
                </div>
 
-               @auth()
-                   <div class="flex items-center">
-                    Comment
-                   </div>
-               @endauth
+              
                   
             @endforeach
           
