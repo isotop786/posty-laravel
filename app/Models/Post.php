@@ -33,4 +33,10 @@ class Post extends Model
     {
         return $this->hasMany(Commet::class);
     }
+
+    public function ownedBy(User $user)
+    {
+        
+        return $user->id == $this->user_id;
+    }
 }

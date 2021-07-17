@@ -86,6 +86,22 @@ Posty | All Posts
 
                                 @endif
                             </div>
+                            @auth
+                            {{-- @if($p->user_id == auth()->user()->id) --}}
+                            @can('delete',$p)
+                                
+                           
+                            <div class="p-1">
+                                        <form action="{{route('deletepost',$p->id)}}" method="post">
+                                        @csrf 
+                                        @method("DELETE")
+                                        <button class="p-2 rounded-lg bg-red-500 text-white" type="submit">Delete Post</button>
+                                        </form>
+                            </div>
+
+                            {{-- @endif --}}
+                             @endcan
+                             @endauth
                          
                           @auth()
                           <hr>

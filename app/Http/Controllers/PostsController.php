@@ -37,4 +37,38 @@ class PostsController extends Controller
 
 
     }
+
+    public function delete(Post $post)
+    {
+        // dd($post);
+        // dd($post->id);
+        // $del = Post::find($post->id());
+
+        // $del->delete();
+        // dd(auth()->user()->id);
+        // dd($post->user->id);
+
+        // if($post->user_id == auth()->user()->id){
+        //     $post->delete();
+        // }else{
+        //     dd("don't be over smart");
+        // }
+
+        # protected by model defined method
+
+        // if($post->ownedBy(auth()->user())){
+        //     $post->delete();
+        // }
+        // else{
+        //     dd("Do not try to be over smart");
+        // }
+
+        # Using Policy 
+        $this->authorize('delete',$post);
+
+        $post->delete();
+       
+
+        return back();
+    }
 }

@@ -42,6 +42,9 @@ Dashboard
         </div>
     </div>
 
+    @else 
+    <div>No Posts yet</div>
+
     @endif
 
    
