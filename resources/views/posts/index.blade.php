@@ -46,7 +46,7 @@ Posty | All Posts
          
             @foreach ($posts as $p)
                <div class="my-4 p-2 bg-gray-100 border-2">
-                    <a href="" class="font-bold">{{$p->user->name}}</a>
+                    <a href="{{route("userposts",$p->user_id)}}" class="font-bold">{{$p->user->name}}</a>
                     <span class="text-gray-600 text-sm">{{$p->created_at->diffForHumans()}}</span>
                     <p class="mb-2">{{$p->body}}</p>
 

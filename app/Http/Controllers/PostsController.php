@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Post;
+use App\Models\User;
 
 class PostsController extends Controller
 {
@@ -70,5 +71,24 @@ class PostsController extends Controller
        
 
         return back();
+    }
+
+    public function user_posts($userId)
+    {
+        // dd($userId);
+
+    //     $posts = Post::where('user_id',$userId)->get();
+
+    //    $name = User::find($userId)->name;
+    // //    dd($name);
+
+    //     return view('userposts')->with('posts',$posts)
+    //     ->with('name',$name);
+
+        $user = User::find($userId);
+
+              return view('userposts')->with('posts',$user->posts)
+        ->with('name',$user->name);
+
     }
 }
