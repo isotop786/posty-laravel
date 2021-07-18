@@ -8,6 +8,7 @@ All posts of {{$name}}
     <div class="flex justify-center">
         <div class="w-9/12 bg-white p-6 rounded-lg">
             <h1 class="text-2xl text-center mb-2">All posts of {{$name}}</h1>
+            <a class="bg-blue-500 text-white p-3 m-2 rounded hover:bg-blue-300 " href="{{route("posts")}}">Back to All Posts</a>
             @foreach ($posts as $post)
                  <div class="my-4 p-2 bg-gray-100 border-2">
                     
